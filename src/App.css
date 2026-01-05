@@ -45,6 +45,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-decoration: none;
 }
 
 .logo-icon {
@@ -297,4 +298,15 @@
     width: 32px;
     height: 32px;
   }
+}
+
+/* Solutions App Styles */
+.solutions-app {
+  background: #000000;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+a.cta-button {
+  text-decoration: none;
 }
