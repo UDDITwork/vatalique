@@ -11,7 +11,7 @@ const Solutions = () => {
           <span className="date">February 13, 2025 · Updated July 23, 2025</span>
         </div>
         <h1 className="blog-title">10 RAG examples and use cases from real companies</h1>
-        <p className="blog-author">By Dasha Maliugina, Community Manager at Evidently AI</p>
+        <p className="blog-author">By UDIT from <a href="https://uddit.site" target="_blank" rel="noopener noreferrer">Uddit.site</a></p>
         <img
           src="/images/rag-main.jpg"
           alt="RAG Examples and Use Cases"

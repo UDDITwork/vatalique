@@ -51,6 +51,17 @@
   margin-bottom: 2rem;
 }
 
+.blog-author a {
+  color: #a78bfa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-author a:hover {
+  color: #c4b5fd;
+  text-decoration: underline;
+}
+
 .hero-image {
   width: 100%;
   max-width: 800px;
