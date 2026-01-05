@@ -1,0 +1,30 @@
+{
+  "name": "vatalique",
+  "version": "1.0.0",
+  "description": "Vatalique - Enterprise Solutions",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.182.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.14.2",
+    "postprocessing": "^6.38.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "three": "^0.182.0"
+  }
+}
