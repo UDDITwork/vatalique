@@ -47,13 +47,18 @@ const SplitText = ({
   }, [onLetterAnimationComplete]);
 
   useEffect(() => {
-    if (document.fonts.status === 'loaded') {
-      setFontsLoaded(true);
+    const handleLoad = () => setFontsLoaded(true);
+
+    if (document.fonts?.status === 'loaded') {
+      handleLoad();
+    } else if (document.fonts?.ready) {
+      document.fonts.ready.then(handleLoad).catch(handleLoad);
     } else {
-      document.fonts.ready.then(() => {
-        setFontsLoaded(true);
-      });
+      handleLoad();
     }
+
+    const timer = setTimeout(handleLoad, 500); // Safety timeout
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
