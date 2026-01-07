@@ -1,5 +1,6 @@
 import SplitText from './components/SplitText';
 import Hyperspeed from './components/Hyperspeed';
+import Services from './components/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import './App.css';
@@ -53,6 +54,7 @@ function Navbar() {
       </a>
       <div className="nav-links">
         <a href="#home" className="nav-link">Home</a>
+        <a href="#services" className="nav-link">Services</a>
         <a href="#about" className="nav-link">About</a>
         <a href="#contact" className="nav-link">Contact</a>
       </div>
@@ -104,7 +106,7 @@ function HomePage() {
               ease="power3.out"
               splitType="chars"
               from={{ opacity: 0, y: 0 }}
-              to={{ opacity: 1, y: 0 }} /* Correction: previous had y: 40 -> 0, this logic is fine but split text sometimes needs care. Keeping defaults mostly. */
+              to={{ opacity: 1, y: 0 }}
               threshold={0.1}
               rootMargin="-50px"
               textAlign="center"
@@ -163,6 +165,7 @@ function App() {
     <>
       <Navbar />
       <HomePage />
+      <Services />
       <About />
       <Contact />
     </>
