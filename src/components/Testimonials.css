@@ -1,0 +1,155 @@
+.testimonials-section {
+  padding: 4rem 2rem;
+  background-color: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.testimonial-card {
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  border: 1px solid #1f1f1f;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.user-icon, .menu-dots {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.card-body {
+  display: flex;
+  padding: 2.5rem;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.text-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.testimonial-title {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.testimonial-desc {
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-box {
+  background-color: #111; /* Dark background */
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  text-align: center;
+  min-width: 140px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.image-content {
+  flex: 0 0 350px;
+  position: relative;
+}
+
+.author-image {
+  width: 100%;
+  height: 100%; /* Or fixed height */
+  min-height: 300px;
+  object-fit: cover; /* Cover */
+  border-radius: 8px;
+  filter: grayscale(20%); /* Slight mute */
+}
+
+/* Quote Section */
+.testimonial-quote {
+  max-width: 800px;
+  text-align: center;
+}
+
+.testimonial-quote p {
+  color: #888;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-family: 'Inter', sans-serif; /* Or serif for contrast */
+}
+
+.testimonial-quote em {
+  color: #fff;
+  font-style: italic;
+  font-family: 'Playfair Display', serif; /* Or similar elegant font */
+  padding: 0 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-body {
+    flex-direction: column-reverse;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .image-content {
+    flex: auto;
+    width: 100%;
+    min-height: 250px;
+  }
+
+  .stat-box {
+    padding: 1rem;
+    min-width: auto;
+    flex: 1;
+  }
+  
+  .testimonial-quote p {
+    font-size: 1.2rem;
+  }
+}
