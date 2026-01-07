@@ -26,7 +26,7 @@ const Contact = () => {
     }, []);
 
     return (
-        <div className="contact-page" ref={containerRef}>
+        <div id="contact" className="contact-page" ref={containerRef}>
             <div className="contact-container">
 
                 {/* Top Section split: Title/Menu on Left, Form on Right (as per screenshot roughly) but adapted for web */}
@@ -67,17 +67,9 @@ const Contact = () => {
                         <div className="links-section glass-panel">
                             <div className="links-col">
                                 <h4>Menu</h4>
-                                <a href="/">Home</a>
-                                <a href="/about">About</a>
-                                <a href="/solutions">Solutions</a>
-                                <a href="/contact">Contact</a>
-                            </div>
-                            <div className="links-col">
-                                <h4>Services</h4>
-                                <a href="/solutions">Workflow Automation</a>
-                                <a href="/solutions">AI Agents</a>
-                                <a href="/solutions">RAG Systems</a>
-                                <a href="/solutions">Mobile Development</a>
+                                <a href="#home">Home</a>
+                                <a href="#about">About</a>
+                                <a href="#contact">Contact</a>
                             </div>
                         </div>
 

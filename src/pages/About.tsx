@@ -31,7 +31,7 @@ const About = () => {
     }, []);
 
     return (
-        <div className="about-page" ref={containerRef}>
+        <div id="about" className="about-page" ref={containerRef}>
             {/* Hero Section */}
             <section className="about-hero">
                 <div className="content-wrapper">

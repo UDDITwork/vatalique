@@ -1,7 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import SplitText from './components/SplitText';
 import Hyperspeed from './components/Hyperspeed';
-import Solutions from './pages/Solutions';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import './App.css';
@@ -43,38 +41,31 @@ const hyperspeedOptions = {
 };
 
 function Navbar() {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
-  const isSolutions = location.pathname === '/solutions';
-  const isAbout = location.pathname === '/about';
-  const isContact = location.pathname === '/contact';
-
   return (
     <nav className="navbar">
-      <Link to="/" className="nav-logo">
+      <a href="#home" className="nav-logo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" className="logo-icon">
           <circle cx="50" cy="50" r="45" stroke="#8B5CF6" strokeWidth="4" />
           <path d="M30 35 L50 65 L70 35" stroke="#8B5CF6" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
           <circle cx="50" cy="50" r="8" fill="#8B5CF6" />
         </svg>
         <span className="logo-text">Vatalique</span>
-      </Link>
+      </a>
       <div className="nav-links">
-        <Link to="/" className={`nav-link ${isHome ? 'active' : ''}`}>Home</Link>
-        <Link to="/solutions" className={`nav-link ${isSolutions ? 'active' : ''}`}>Solutions</Link>
-        <Link to="/about" className={`nav-link ${isAbout ? 'active' : ''}`}>About</Link>
-        <Link to="/contact" className={`nav-link ${isContact ? 'active' : ''}`}>Contact</Link>
+        <a href="#home" className="nav-link">Home</a>
+        <a href="#about" className="nav-link">About</a>
+        <a href="#contact" className="nav-link">Contact</a>
       </div>
-      <Link to="/contact" className="cta-button nav-cta">
+      <a href="#contact" className="cta-button nav-cta">
         Get Started
-      </Link>
+      </a>
     </nav>
   );
 }
 
 function HomePage() {
   return (
-    <div className="app">
+    <div id="home" className="app">
       {/* Background */}
       <div className="background-container">
         <Hyperspeed effectOptions={hyperspeedOptions} />
@@ -112,8 +103,8 @@ function HomePage() {
               duration={0.6}
               ease="power3.out"
               splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
+              from={{ opacity: 0, y: 0 }}
+              to={{ opacity: 1, y: 0 }} /* Correction: previous had y: 40 -> 0, this logic is fine but split text sometimes needs care. Keeping defaults mostly. */
               threshold={0.1}
               rootMargin="-50px"
               textAlign="center"
@@ -127,12 +118,12 @@ function HomePage() {
           </p>
 
           <div className="hero-buttons">
-            <Link to="/solutions" className="cta-button primary">
-              Browse Solutions
-            </Link>
-            <Link to="/about" className="cta-button secondary">
+            <a href="#contact" className="cta-button primary">
+              Get Started
+            </a>
+            <a href="#about" className="cta-button secondary">
               Learn More
-            </Link>
+            </a>
           </div>
         </div>
       </main>
@@ -167,25 +158,14 @@ function HomePage() {
   );
 }
 
-function SolutionsPage() {
-  return (
-    <div className="app solutions-app">
-      <Solutions />
-    </div>
-  );
-}
-
 function App() {
   return (
-    <Router>
+    <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/solutions" element={<SolutionsPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Router>
+      <HomePage />
+      <About />
+      <Contact />
+    </>
   );
 }
 
