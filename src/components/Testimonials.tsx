@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import './Testimonials.css';
+import { useRef, useEffect } from "react";
+
+import "./Testimonials.css";
 
 interface TestimonialData {
     title: string;
@@ -9,48 +9,87 @@ interface TestimonialData {
     revenue: string;
     quote: string;
     author: string;
-    role: string; // e.g., Founder of CloudFlow
+    role: string;
     image: string;
-    challenges: string[]; // for highlighted text
 }
 
 const testimonials: TestimonialData[] = [
     {
-        title: "Max's SaaS Revolution",
-        description: "Max, the founder of CloudFlow, implemented AI automation in their processes. This move slashed operational costs by 50% and boosted team productivity by 75%, empowering the company to accelerate growth and expand faster.",
-        roi: "60%",
-        revenue: "45%",
-        quote: "They took the time to understand our Challenges, identified our Target Audience, and made our brand shine. Their solutions were very effective!",
-        author: "Max",
-        role: "Founder of CloudFlow",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop", // Placeholder or from assets
-        challenges: ["Challenges", "Target Audience"]
-    }
+        title: "Rohan's System Overhaul",
+        description:
+            "Rohan, CTO at TechSphere, needed a complete overhaul of their legacy CRM. Vatalique's automation reduced manual entry by 90%, allowing the team to focus on innovation rather than administration.",
+        roi: "85%",
+        revenue: "60%",
+        quote:
+            "What impressed me most was how Vatalique didn't just rush to code. They spent weeks just understanding our full requirements to perceive the depth of the problem. The result? A flawless system.",
+        author: "Rohan Patel",
+        role: "CTO at TechSphere",
+        image:
+            "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop",
+    },
+    {
+        title: "Ananya's Workflow Magic",
+        description:
+            "InnovateAI struggled with fragmented tools. Our solution unified their stack, cutting cross-platform lag to zero and synchronizing data in real-time.",
+        roi: "70%",
+        revenue: "50%",
+        quote:
+            "Many agencies promise speed, but Vatalique connects speed with depth. They really took time to understand our nuanced workflows before automating them.",
+        author: "Ananya Gupta",
+        role: "Founder of InnovateAI",
+        image:
+            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop",
+    },
+    {
+        title: "Vikram's Scaling Success",
+        description:
+            "FutureScale needed to handle 10x traffic. We architected a scalable cloud solution that handled the load without a hitch, ensuring 99.99% uptime.",
+        roi: "95%",
+        revenue: "120%",
+        quote:
+            "The team at Vatalique perceives depth in requirements like no other. They dug deep into our legacy systems and provided a solution that was robust, not just a quick fix.",
+        author: "Vikram Singh",
+        role: "Director at FutureScale",
+        image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
+    },
+    {
+        title: "Meera's Operational Zen",
+        description:
+            "Operations were chaotic. We implemented intelligent agents that sorted, prioritized, and routed tasks, bringing calm and order to the chaos.",
+        roi: "50%",
+        revenue: "35%",
+        quote:
+            "I appreciated their patience. They take the time to deeply understand every requirement. Honest, genuine, and technically brilliant work.",
+        author: "Meera Reddy",
+        role: "VP of Operations",
+        image:
+            "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop",
+    },
+    // Duplicating for seamless loop effect if needed, but managing via CSS/GSAP is better.
 ];
 
 const Testimonials = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const scrollerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".testimonial-card", {
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: ".testimonials-section",
-                    start: "top center+=100",
-                }
-            });
-        }, containerRef);
+        // Clone items for seamless marquee
+        if (!scrollerRef.current) return;
 
-        return () => ctx.revert();
+        const scrollerContent = Array.from(scrollerRef.current.children);
+        scrollerContent.forEach((item) => {
+            const duplicatedItem = item.cloneNode(true);
+            (duplicatedItem as HTMLElement).setAttribute('aria-hidden', 'true');
+            scrollerRef.current?.appendChild(duplicatedItem);
+        });
+
     }, []);
 
     return (
         <section className="testimonials-section" ref={containerRef}>
-            <div className="testimonials-container">
+            <h2 className="testimonials-header">What our clients say</h2>
+            <div className="testimonials-scroller" ref={scrollerRef}>
                 {testimonials.map((testimonial, index) => (
                     <div key={index} className="testimonial-wrapper">
                         <div className="testimonial-card">
@@ -61,33 +100,43 @@ const Testimonials = () => {
                                 </div>
 
                                 <div className="card-body">
+                                    <div className="image-content">
+                                        <img
+                                            src={testimonial.image}
+                                            alt={testimonial.author}
+                                            className="author-image"
+                                        />
+                                    </div>
+
                                     <div className="text-content">
                                         <h3 className="testimonial-title">{testimonial.title}</h3>
-                                        <p className="testimonial-desc">{testimonial.description}</p>
+                                        <p className="testimonial-desc">
+                                            {testimonial.description}
+                                        </p>
 
                                         <div className="stats-grid">
                                             <div className="stat-box">
                                                 <span className="stat-value">{testimonial.roi}</span>
-                                                <span className="stat-label">Increase in ROI</span>
+                                                <span className="stat-label">ROI</span>
                                             </div>
                                             <div className="stat-box">
-                                                <span className="stat-value">{testimonial.revenue}</span>
-                                                <span className="stat-label">Boost in Revenue</span>
+                                                <span className="stat-value">
+                                                    {testimonial.revenue}
+                                                </span>
+                                                <span className="stat-label">Revenue</span>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className="image-content">
-                                        <img src={testimonial.image} alt={testimonial.author} className="author-image" />
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="testimonial-quote">
-                            <p>
-                                They took the time to understand our <em>Challenges</em>, identified our <em>Target Audience</em>, and made our brand shine. Their solutions were very effective!
-                            </p>
+                            <p>"{testimonial.quote}"</p>
+                            <div className="citation">
+                                <cite>{testimonial.author}</cite>
+                                <span>{testimonial.role}</span>
+                            </div>
                         </div>
                     </div>
                 ))}
